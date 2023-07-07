@@ -1,0 +1,4 @@
+CompileFlags: # Tweak the parse settings
+  Add: 
+    - "-I/usr/avr/include/"
+
