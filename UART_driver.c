@@ -1,32 +1,37 @@
-#define __ATmegaxx0__
-#include <avr/io.h>
-#include <avr/iom2560.h>
-#include <avr/iomxx0_1.h>
-#include <avr/portpins.h>
-#include "Mega2560.h"
-#include <stdint.h>
+#include "UART_driver.h"
 
-#define F_CPU 16000000
-#define FOSC 1843200
-#define BAUD 9600
-#define MYUBRR (FOSC/16/BAUD-1)
-#include <util/setbaud.h>
-
-void USART_Init(unsigned int ubrr);
-
-int main(void) {
-    USART_Init(MYUBRR);
-    return 1;
-}
-
-void USART_Init(unsigned int ubrr) {
+void USART_Init(unsigned char ubrr) {
     /* Set baud rate */
-    UBRRH = (unsigned char) (ubrr >> 8);
-    UBRRL = (unsigned char) ubrr;
+    UBRR0H = (unsigned char) (ubrr >> 8);
+    UBRR0L = (unsigned char) ubrr;
 
     /* Enable receiver and transmitter */
-    UCSRB = (1 << RXEN) | (1<<TXEN);
+    UCSR0B = (1 << RXEN0) | (1<<TXEN0);
 
     /* Set frame format: 8data, 2stop bit */
-    UCSRC = (1<<USBS) | (3<<UCSZ0);
+    UCSR0C = (1<<USBS0) | (3<<UCSZ00);
+}
+
+void USART_Transmit( int8_t data) {
+    /* Wait for empty transmit buffer */
+    while ( !( UCSR0A & (1<<UDRE0)) );
+
+    /* Put data into buffer, sends the data */  
+    UDR0 = data;
+}
+
+unsigned char USART_Recive(void) {
+    /* Wait for data to be received */
+    while ( !(UCSR0A & (1<<RXC0)) );
+
+    /* Get and return received data from buffer */  
+    return UDR0;
+}
+
+void print(char * data) {
+    int16_t len = strlen(data);
+    for (int16_t i = 0; i < len; i++) {
+        USART_Transmit((int)data[i]);
+    }
+
 }

@@ -1,11 +1,13 @@
-#include <avr/io.h>
-#include <stdio.h>
-#include <util/delay.h>
-#include "Mega2560.h"
-
-#define F_CPU 16000000UL
+#include "UART_driver.h"
 
 int main(void) {
-    return 0;
+    USART_Init(MYUBRR);
+
+    while (true) {
+        _delay_ms(1000);
+        // USART_Transmit(0x41); //USART_sendChar(0x41);
+        print("Hello world\n");
+    }
+    return 1;
 }
 
