@@ -1,18 +1,49 @@
 CC = avr-gcc
-# Processor name
-MCU = atmega2560
+AVRDUDE = avrdude
+OBJCOPY = avr-objcopy
 
-# Processor frequency
-F_CPU = 16000000UL
+TTY = /dev/ttyACM0
 
-CFLAGS += -Wall -mmcu=$(MCU) -DF_CPU=$(F_CPU)
+PROCESSOR_NAME = atmega2560
+CPU_FREQUENCY = 16000000UL
 
-lib_source = ./lib
-lib_output = ./out
+CFLAGS += -Wall -Wextra -mmcu=$(PROCESSOR_NAME) -DF_CPU=$(CPU_FREQUENCY) -std=c99 -pedantic -Os
 
+MKDIR_P = mkdir -p
 
-SRCS = $(wildcard $(lib_source)/*.c)
-OBJS = $(patsubst $(lib_source)/%.c, $(lib_output)/%.o, $(SRCS))
+SRCPATH = ./lib
+OUTPATH = ./out
+
+OUTNAME = main
+
+OUTBIN = $(OUTPATH)/$(OUTNAME).bin
+OUTHEX = $(OUTPATH)/$(OUTNAME).hex
+
+BINPATH = $(OUTPATH)/$(BIN)
+
+SRCS = $(wildcard $(SRCPATH)/*.c)
+OBJS = $(patsubst $(SRCPATH)/%.c, $(OUTPATH)/%.o, $(SRCS))
+
+all: $(OUTPATH) $(OUTHEX)
+
+$(OUTPATH):
+	$(MKDIR_P) $@
+
+$(OUTPATH)/%.o: $(SRCPATH)/%.c
+	$(CC) -c $< -o $@ $(CFLAGS)
+
+$(OUTBIN): $(OBJS)
+	$(CC) -Os $(CFLAGS) -o $@ main.c $^
+
+$(OUTHEX): $(OUTBIN)
+	$(OBJCOPY) -j .text -j .data -O ihex $^ $@
+
+flash: $(OUTHEX)
+	$(AVRDUDE) -p  $(PROCESSOR_NAME) -c stk500v2 -D -U flash:w:$<:i -F -P $(TTY)
+
+.PHONY: connect
+connect:
+	sudo putty $(TTY) -serial -sercfg 9600
 
 # default:
 # 	$(CC) -Os $(CFLAGS) -o main.bin main.c $(OBJS)
@@ -22,15 +53,5 @@ OBJS = $(patsubst $(lib_source)/%.c, $(lib_output)/%.o, $(SRCS))
 # 	sudo putty /dev/ttyACM0 -serial -sercfg 9600
 
 
-
-# all: $(lib_output)
-# 
-# $(OBJS)/%.o: $(SRCS)/%.c
-# 	$(CC) $(CFLAGS) -c $< -o $@ 
-# 
-# $(lib_output):
-# 	mkdir -p $@
-
-clean:
-	# suprimer la merde 
-	rm *.o
+clean: $(OUTPATH)
+	rm -rf $^
