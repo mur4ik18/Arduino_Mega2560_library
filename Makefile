@@ -45,13 +45,5 @@ flash: $(OUTHEX)
 connect:
 	sudo putty $(TTY) -serial -sercfg 9600
 
-# default:
-# 	$(CC) -Os $(CFLAGS) -o main.bin main.c $(OBJS)
-# 	avr-objcopy -j .text -j .data -O ihex main.bin main.hex
-# 	sudo avrdude -p atmega2560 -c stk500v2 -D -U flash:w:main.hex:i -F -P /dev/ttyACM0
-# 
-# 	sudo putty /dev/ttyACM0 -serial -sercfg 9600
-
-
 clean: $(OUTPATH)
 	rm -rf $^
