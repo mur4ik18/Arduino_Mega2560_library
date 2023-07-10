@@ -1,7 +1,4 @@
 /* Mega2560.h */
-#include <stdio.h>
-#include <stdbool.h>
-#include <stdint.h>
 
 #define ON true
 #define OFF false

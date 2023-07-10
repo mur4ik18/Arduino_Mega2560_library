@@ -3,14 +3,16 @@
 #include <avr/iom2560.h>
 #include <avr/iomxx0_1.h>
 #include <avr/portpins.h>
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdint.h>
+
 #include "Mega2560.h"
+#include "UART_driver.h"
 
 void digitalOutputMode(int port);
 void digitalWrite(int port, bool value);
-
-int main(void) {
-    return 1;
-}
 
 void digitalOutputMode(int port) {
     switch (port) {

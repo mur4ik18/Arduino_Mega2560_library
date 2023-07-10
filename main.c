@@ -1,11 +1,12 @@
-#include "UART_driver.h"
+#include "./lib/UART_driver.h"
+#include "./lib/Mega2560.h"
+#include <util/delay.h>
 
 int main(void) {
     USART_Init(MYUBRR);
 
-    while (true) {
+    while (1) {
         _delay_ms(1000);
-        // USART_Transmit(0x41); //USART_sendChar(0x41);
         print("Hello world\n");
     }
     return 1;

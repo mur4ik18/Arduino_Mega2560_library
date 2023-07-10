@@ -1,5 +1,10 @@
 #include "UART_driver.h"
 
+#include <string.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
+
 void USART_Init(unsigned char ubrr) {
     /* Set baud rate */
     UBRR0H = (unsigned char) (ubrr >> 8);
@@ -28,10 +33,3 @@ unsigned char USART_Recive(void) {
     return UDR0;
 }
 
-void print(char * data) {
-    int16_t len = strlen(data);
-    for (int16_t i = 0; i < len; i++) {
-        USART_Transmit((int)data[i]);
-    }
-
-}
