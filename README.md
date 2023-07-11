@@ -5,7 +5,22 @@
   Arduino Mega2560 library
   <br>
 </h1>
-
-## Key Features
+## Done
+* Digital ports using
+    - Output mode
+* UART driver
+## Features
+* Digital ports using
+    - Input mode
+* library for 74hc595
+    - write documentation   
+* library for 1 Digit 7-Segment Display
+    - write documentation
+* DHT11 library
+    - write documentation
+* library for 4 Digit 7-Segment Display
+    - write documentation
+* library LCD1602 Module (Display)
+    - write documentation
 
 
