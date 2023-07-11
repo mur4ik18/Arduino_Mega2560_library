@@ -5,10 +5,12 @@
   Arduino Mega2560 library
   <br>
 </h1>
+
 ## Done
 * Digital ports using
     - Output mode
 * UART driver
+
 ## Features
 * Digital ports using
     - Input mode
