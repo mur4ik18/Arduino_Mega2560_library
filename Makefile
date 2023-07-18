@@ -39,7 +39,7 @@ $(OUTHEX): $(OUTBIN)
 	$(OBJCOPY) -j .text -j .data -O ihex $^ $@
 
 flash: $(OUTHEX)
-	$(AVRDUDE) -p  $(PROCESSOR_NAME) -c stk500v2 -D -U flash:w:$<:i -F -P $(TTY)
+	sudo $(AVRDUDE) -p  $(PROCESSOR_NAME) -c stk500v2 -D -U flash:w:$<:i -F -P $(TTY)
 
 .PHONY: connect
 connect:
