@@ -6,9 +6,9 @@
 void pinMode(uint8_t num, uint8_t mode) {
     uint8_t port = digital_to_port(num);
     uint8_t bit = getBit(num);
-
-    uint8_t reg = getReg(port);
-    uint8_t pin = getPin(port);
+    volatile uint8_t *reg, *pin;
+    reg = getReg(port);
+    pin = getPin(port);
 
     if (mode == INPUT) {
         uint8_t saved_SREG = SREG;
@@ -17,10 +17,10 @@ void pinMode(uint8_t num, uint8_t mode) {
         *pin &= ~bit;
         SREG = saved_SREG;
     } else {
-        uint8_t saved_SERG = SREG;
+        uint8_t saved_SREG = SREG;
         cli();
         *reg |= bit;
         SREG = saved_SREG;
     }
 
-};
+}
