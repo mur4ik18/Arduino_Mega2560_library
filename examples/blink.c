@@ -1,4 +1,4 @@
-#include "Mega2560.h"
+#include "../lib/Mega2560.h"
 #include <util/delay.h>
 
 // digital 13 - used for working with blink
