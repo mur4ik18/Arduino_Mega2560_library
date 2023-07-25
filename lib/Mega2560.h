@@ -11,10 +11,10 @@
 
 // Here you should use number of digital port.
 #define digital_to_port(x) (pgm_read_byte( digital_ports + x ))
-#define getBit(x) (pgm_read_byte( digital_pin_mask + x ))
+#define getBit(x) (pgm_read_byte( digital_pin_masks + x ))
 // for getting Register and Pin you should use digital_to_port. 
-#define getReg(x) (pgm_read_byte( ddrx + x ))
-#define getPin(x) (pgm_read_byte( pinx + x ))
+#define getReg(x) ((volatile uint8_t *) pgm_read_byte( ddrx + x ))
+#define getPin(x) ((volatile uint8_t *) pgm_read_byte( pinx + x ))
 // For getting Port you can use digital_to_port.
 #define getPort(x) (pgm_read_byte( portx + x ))
 
