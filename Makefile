@@ -16,7 +16,6 @@ OUTPATH = ./out
 EXAMPLS = ./examples
 
 
-
 # --------------------------------------------------------------------------------------------------------------------
 # Here u can use different examples which you can find in examples folder
 # Names what you can use:
