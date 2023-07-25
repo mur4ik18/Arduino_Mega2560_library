@@ -14,6 +14,6 @@ uint8_t main(void) {
         turnOn(LED);
         _delay_ms(1000);
         turnOff(LED);
-    };
+    }
     return 1;
 }
