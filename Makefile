@@ -13,13 +13,22 @@ MKDIR_P = mkdir -p
 
 SRCPATH = ./lib
 OUTPATH = ./out
+EXAMPLS = ./examples
 
-OUTNAME = main
+
+
+# --------------------------------------------------------------------------------------------------------------------
+# Here u can use different examples which you can find in examples folder
+# Names what you can use:
+# 	- blink
+#
+# --------------------------------------------------------------------------------------------------------------------
+OUTNAME = blink
 
 OUTBIN = $(OUTPATH)/$(OUTNAME).bin
 OUTHEX = $(OUTPATH)/$(OUTNAME).hex
 
-BINPATH = $(OUTPATH)/$(BIN)
+EXSRCS = $(wildcard $(EXAMPLS)/*.c)
 
 SRCS = $(wildcard $(SRCPATH)/*.c)
 OBJS = $(patsubst $(SRCPATH)/%.c, $(OUTPATH)/%.o, $(SRCS))
@@ -33,7 +42,7 @@ $(OUTPATH)/%.o: $(SRCPATH)/%.c
 	$(CC) -c $< -o $@ $(CFLAGS)
 
 $(OUTBIN): $(OBJS)
-	$(CC) -Os $(CFLAGS) -o $@ main.c $^
+	$(CC) -Os $(CFLAGS) -o $@ $(EXAMPLS)/$(OUTNAME).c $^
 
 $(OUTHEX): $(OUTBIN)
 	$(OBJCOPY) -j .text -j .data -O ihex $^ $@
