@@ -10,6 +10,18 @@
 
 #include "Mega2560.h"
 
+//#define turnOn(port) ( getPort(digital_to_port(port)) |= getPort(digital_to_port(port)) | (ON << getBit(port) ))
+//#define turnOff(port) ( getPort(digital_to_port(port)) |= getPort(digital_to_port(port)) & ~(ON << getBit(port) ))
+void turn(uint8_t port, bool onoff) {
+    volatile uint8_t *out = getPort(digital_to_port(port));
+    volatile uint8_t bit = getBit(port);
+    if (onoff) {
+        *out |= bit;
+    } else {
+        *out &= ~bit;
+    }
+}
+
 void bitsToArray(uint8_t num, uint8_t *bitters){
     unsigned int size = sizeof(unsigned char);
     unsigned int maxPow = 1<<(size*8-1);
