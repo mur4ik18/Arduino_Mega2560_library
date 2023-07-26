@@ -16,9 +16,7 @@
 #define getReg(x) ((volatile uint8_t *) pgm_read_byte( ddrx + x ))
 #define getPin(x) ((volatile uint8_t *) pgm_read_byte( pinx + x ))
 // For getting Port you can use digital_to_port.
-#define getPort(x) (pgm_read_byte( portx + x ))
+#define getPort(x) ((volatile uint8_t *) pgm_read_byte( portx + x ))
 
-#define turnOn(port) ( getPort(digital_to_port(port)) |= getPort(digital_to_port(port)) | (ON << getBit(port) ))
-#define turnOff(port) ( getPort(digital_to_port(port)) |= getPort(digital_to_port(port)) & ~(ON << getBit(port) ))
-
+void turn(uint8_t port, bool onoff);
 void bitsToArray(uint8_t num, uint8_t *bitters);

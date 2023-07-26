@@ -11,9 +11,9 @@ void setup() {
 uint8_t main(void) {
     setup();
     while(1) {
-        turnOn(LED);
+        turn(LED, ON);
         _delay_ms(1000);
-        turnOff(LED);
+        turn(LED, OFF);
     }
     return 1;
 }
