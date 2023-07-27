@@ -11,10 +11,12 @@
 #include "Mega2560.h"
 #include "UART_driver.h"
 
-void digitalOutputMode(int port);
-void digitalWrite(int port, bool value);
 
-void digitalOutputMode(int port) {
+void digitalOutputMode(int8_t port);
+void digitalWrite(int8_t port, bool value);
+void bitsToArray(uint8_t num, uint8_t *bitters);
+
+void digitalOutputMode(int8_t port) {
     switch (port) {
         case 2:
             DDRE |= (1 << 4);
@@ -47,7 +49,7 @@ void digitalOutputMode(int port) {
     }
 }
 
-void digitalWrite(int port, bool value) {
+void digitalWrite(int8_t port, bool value) {
     switch (port) {
         case 2:
             value? turnOn(PORTE, PE4) : turnOff(PORTE, PE4);
@@ -82,7 +84,7 @@ void digitalWrite(int port, bool value) {
 
 
 
-void bitsToArray(unsigned int num, int *bitters){
+void bitsToArray(uint8_t num, uint8_t *bitters){
     unsigned int size = sizeof(unsigned char);
     unsigned int maxPow = 1<<(size*8-1);
     int bittsArray[7] = {0,0,0,0,0,0,0};
