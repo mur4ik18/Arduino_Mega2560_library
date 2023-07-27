@@ -41,7 +41,8 @@ $(OUTPATH)/%.o: $(SRCPATH)/%.c
 	$(CC) -c $< -o $@ $(CFLAGS)
 
 $(OUTBIN): $(OBJS)
-	$(CC) -Os $(CFLAGS) -o $@ $(EXAMPLS)/$(OUTNAME).c $^
+	$(CC) $(CFLAGS) $(EXAMPLS)/$(OUTNAME).c -o $(OUTPATH)/$(OUTNAME).o
+	$(CC) $(CFLAGS) -o $@ $(OUTPATH)/$(OUTNAME).o $^
 
 $(OUTHEX): $(OUTBIN)
 	$(OBJCOPY) -j .text -j .data -O ihex $^ $@
