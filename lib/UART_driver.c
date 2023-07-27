@@ -21,7 +21,7 @@ void USART_Transmit( int8_t data) {
     /* Wait for empty transmit buffer */
     while ( !( UCSR0A & (1<<UDRE0)) );
 
-    /* Put data into buffer, sends the data */  
+    /* Put data into buffer, sends the data */
     UDR0 = data;
 }
 
@@ -29,7 +29,6 @@ unsigned char USART_Recive(void) {
     /* Wait for data to be received */
     while ( !(UCSR0A & (1<<RXC0)) );
 
-    /* Get and return received data from buffer */  
+    /* Get and return received data from buffer */
     return UDR0;
 }
-

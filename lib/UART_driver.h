@@ -13,8 +13,6 @@
 #include <avr/portpins.h>
 //#include <util/delay.h>
 
-#include "print.h"
-
 #define F_CPU 16000000UL
 
 #define BAUD 9600

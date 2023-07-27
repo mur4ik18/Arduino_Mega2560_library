@@ -41,7 +41,7 @@ $(OUTPATH)/%.o: $(SRCPATH)/%.c
 	$(CC) -c $< -o $@ $(CFLAGS)
 
 $(OUTBIN): $(OBJS)
-	$(CC) $(CFLAGS) $(EXAMPLS)/$(OUTNAME).c -o $(OUTPATH)/$(OUTNAME).o
+	$(CC) $(CFLAGS) -c $(EXAMPLS)/$(OUTNAME).c -o $(OUTPATH)/$(OUTNAME).o
 	$(CC) $(CFLAGS) -o $@ $(OUTPATH)/$(OUTNAME).o $^
 
 $(OUTHEX): $(OUTBIN)
