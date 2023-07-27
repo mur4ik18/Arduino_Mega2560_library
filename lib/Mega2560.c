@@ -10,8 +10,6 @@
 
 #include "Mega2560.h"
 
-//#define turnOn(port) ( getPort(digital_to_port(port)) |= getPort(digital_to_port(port)) | (ON << getBit(port) ))
-//#define turnOff(port) ( getPort(digital_to_port(port)) |= getPort(digital_to_port(port)) & ~(ON << getBit(port) ))
 void turn(uint8_t port, bool onoff) {
     volatile uint8_t *out = getPort(digital_to_port(port));
     volatile uint8_t bit = getBit(port);
@@ -39,4 +37,26 @@ void bitsToArray(uint8_t num, uint8_t *bitters){
     for (int i=7; i>=0;i--) {
         bitters[k++] = bittsArray[i];
     } 
+}
+
+void pinMode(uint8_t num, bool mode) {
+    uint8_t port = digital_to_port(num);
+    uint8_t bit = getBit(num);
+    volatile uint8_t *reg, *pin;
+    reg = getReg(port);
+    pin = getPin(port);
+
+    if (mode == INPUT) {
+        uint8_t saved_SREG = SREG;
+//        cli();
+        *reg &= ~bit;
+        *pin &= ~bit;
+        SREG = saved_SREG;
+    } else {
+        uint8_t saved_SREG = SREG;
+//        cli();
+        *reg |= bit;
+        SREG = saved_SREG;
+    }
+
 }
