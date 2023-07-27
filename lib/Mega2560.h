@@ -1,4 +1,6 @@
-/* Mega2560.h */
+#ifndef MEGA_2560_H
+#define MEGA_2560_H
+
 #include <stdbool.h>
 #include <stdint.h>
 #include <avr/pgmspace.h>
@@ -116,3 +118,5 @@ const uint8_t PROGMEM digital_ports[] = {
 void turn(uint8_t port, bool onoff);
 void bitsToArray(uint8_t num, uint8_t *bitters);
 void pinMode(uint8_t num, bool mode);
+
+#endif /* MEGA_2560_H */
