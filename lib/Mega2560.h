@@ -26,7 +26,7 @@
 #define PL 10
 
 // registers - DDRA-DDRL
-const uint16_t PROGMEM ddrx[] = {
+static const uint16_t PROGMEM ddrx[] = {
     (uint16_t) &DDRA,
     (uint16_t) &DDRB,
     (uint16_t) &DDRC,
@@ -41,7 +41,7 @@ const uint16_t PROGMEM ddrx[] = {
 };
 
 // ports - PORTA-PORTL
-const uint16_t PROGMEM portx[] = {
+static const uint16_t PROGMEM portx[] = {
     (uint16_t) &PORTA,
     (uint16_t) &PORTB,
     (uint16_t) &PORTC,
@@ -56,7 +56,7 @@ const uint16_t PROGMEM portx[] = {
 };
 
 // pins - PINA-PINL
-const uint16_t PROGMEM pinx[] = {
+static const uint16_t PROGMEM pinx[] = {
     (uint16_t) &PINA,
     (uint16_t) &PINB,
     (uint16_t) &PINC,
@@ -70,7 +70,7 @@ const uint16_t PROGMEM pinx[] = {
     (uint16_t) &PINL,
 };
 
-const uint8_t PROGMEM digital_pin_masks[] = {
+static const uint8_t PROGMEM digital_pin_masks[] = {
 	_BV( 0 ), // d0 PE 0 - USART0_RX
 	_BV( 1 ), // d1 PE 1 - USART0_TX
 	_BV( 4 ), // d2 PE 4
@@ -89,7 +89,7 @@ const uint8_t PROGMEM digital_pin_masks[] = {
 
 
 // it is ports
-const uint8_t PROGMEM digital_ports[] = {
+static const uint8_t PROGMEM digital_ports[] = {
 	PE, // d0 PE 0 - USART0_RX
 	PE, // d1 PE 1 - USART0_TX
 	PE, // d2 PE 4
