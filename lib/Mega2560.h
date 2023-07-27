@@ -36,7 +36,7 @@ const uint16_t PROGMEM ddrx[] = {
     (uint16_t) &DDRJ,
     (uint16_t) &DDRK,
     (uint16_t) &DDRL,
-}; 
+};
 
 // ports - PORTA-PORTL
 const uint16_t PROGMEM portx[] = {
@@ -51,7 +51,7 @@ const uint16_t PROGMEM portx[] = {
     (uint16_t) &PORTJ,
     (uint16_t) &PORTK,
     (uint16_t) &PORTL,
-}; 
+};
 
 // pins - PINA-PINL
 const uint16_t PROGMEM pinx[] = {
@@ -66,17 +66,17 @@ const uint16_t PROGMEM pinx[] = {
     (uint16_t) &PINJ,
     (uint16_t) &PINK,
     (uint16_t) &PINL,
-}; 
+};
 
 const uint8_t PROGMEM digital_pin_masks[] = {
 	_BV( 0 ), // d0 PE 0 - USART0_RX
-	_BV( 1 ), // d1 PE 1 - USART0_TX	
+	_BV( 1 ), // d1 PE 1 - USART0_TX
 	_BV( 4 ), // d2 PE 4
     _BV( 5 ), // d3 PE 5
 	_BV( 5 ), // d4 PG 5
 	_BV( 3 ), // d5 PE 3
-	_BV( 3 ), // d6 PH 3 
-	_BV( 4 ), // d7 PH 4 
+	_BV( 3 ), // d6 PH 3
+	_BV( 4 ), // d7 PH 4
 	_BV( 5 ), // d8 PH 5
 	_BV( 6 ), // d9 PH 6
 	_BV( 4 ), // d10 PB 4
@@ -86,10 +86,10 @@ const uint8_t PROGMEM digital_pin_masks[] = {
 };
 
 
-// it is ports 
+// it is ports
 const uint8_t PROGMEM digital_ports[] = {
-	PE, // d0 PE 0 - USART0_RX	
-	PE, // d1 PE 1 - USART0_TX	
+	PE, // d0 PE 0 - USART0_RX
+	PE, // d1 PE 1 - USART0_TX
 	PE, // d2 PE 4
 	PE, // d3 PE 5
 	PG, // d4 PG 5
@@ -100,14 +100,14 @@ const uint8_t PROGMEM digital_ports[] = {
 	PH, // d9 PH 6
 	PB, // d10 PB 4
 	PB, // d11 PB 5
-	PB, // d12 PB 6	
-	PB, // d13 PB 7	
+	PB, // d12 PB 6
+	PB, // d13 PB 7
 };
 
 // Here you should use number of digital port.
 #define digital_to_port(x) (pgm_read_byte( digital_ports + x ))
 #define getBit(x) (pgm_read_byte( digital_pin_masks + x ))
-// for getting Register and Pin you should use digital_to_port. 
+// for getting Register and Pin you should use digital_to_port.
 #define getReg(x) ((volatile uint8_t *) pgm_read_byte( ddrx + x ))
 #define getPin(x) ((volatile uint8_t *) pgm_read_byte( pinx + x ))
 // For getting Port you can use digital_to_port.
