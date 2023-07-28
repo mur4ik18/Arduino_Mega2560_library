@@ -6,7 +6,7 @@
 
 void shiftOut(int8_t dataPin, int8_t clockPin, uint8_t data) {
     for(int8_t i = 0; i < 8; i++) {
-        if ((data & 128) != 0 ) {
+        if ((data & 0b10000000) != 0 ) {
             turn(dataPin, ON);
         } else {
             turn(dataPin, OFF);

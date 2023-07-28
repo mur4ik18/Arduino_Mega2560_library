@@ -7,7 +7,7 @@
 void setup() {
     pinMode(13, OUTPUT);
     USART_Init(MYUBRR);
-    USART_Transmit("Started");
+    print("Started");
 }
 
 int main(void) {
@@ -15,8 +15,10 @@ int main(void) {
     while(1) {
         turn(LED, ON);
         print("LED On\n");
+
         _delay_ms(1000);
         turn(LED, OFF);
+        
         print("LED OFF\n");
         _delay_ms(1000);
     }
