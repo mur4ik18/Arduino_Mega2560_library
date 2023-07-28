@@ -20,9 +20,9 @@ EXAMPLS = ./examples
 # Here u can use different examples which you can find in examples folder
 # Names what you can use:
 # 	- blink
-#
+#	- shift_register
 # --------------------------------------------------------------------------------------------------------------------
-OUTNAME = blink
+OUTNAME = shift_register
 
 OUTBIN = $(OUTPATH)/$(OUTNAME).bin
 OUTHEX = $(OUTPATH)/$(OUTNAME).hex
