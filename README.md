@@ -7,8 +7,8 @@
 </h1>
 
 <p align="center">
-  <img alt="Github language" src="https://img.shields.io/github/languages/top/mur4ik18/django-referral-system?color=success">
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/mur4ik18/django-referral-system?color=success">
+  <img alt="Github language" src="https://img.shields.io/github/languages/top/mur4ik18/Arduino_Mega2560_library?color=success">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/mur4ik18/Arduino_Mega2560_library?color=success">
 </p>
 
 I started this project to understand Arduino. h and how my arduino works. 
