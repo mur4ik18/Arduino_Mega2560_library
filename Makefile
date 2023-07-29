@@ -21,8 +21,9 @@ EXAMPLS = ./examples
 # Names what you can use:
 # 	- blink
 #	- shift_register
+#	- 1dig_7seg_display
 # --------------------------------------------------------------------------------------------------------------------
-OUTNAME = shift_register
+OUTNAME = 1dig_7seg_display
 
 OUTBIN = $(OUTPATH)/$(OUTNAME).bin
 OUTHEX = $(OUTPATH)/$(OUTNAME).hex
