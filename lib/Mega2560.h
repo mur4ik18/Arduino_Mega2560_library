@@ -117,7 +117,6 @@ static const uint8_t PROGMEM digital_ports[] = {
 #define getPort(x) ((volatile uint8_t *) pgm_read_byte( portx + x ))
 
 void turn(uint8_t port, bool onoff);
-void bitsToArray(uint8_t num, uint8_t *bitters);
 void pinMode(uint8_t num, bool mode);
 
 #endif /* MEGA_2560_H */

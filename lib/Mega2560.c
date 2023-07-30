@@ -20,25 +20,6 @@ void turn(uint8_t port, bool onoff) {
     }
 }
 
-void bitsToArray(uint8_t num, uint8_t *bitters){
-    unsigned int size = sizeof(unsigned char);
-    unsigned int maxPow = 1<<(size*8-1);
-    int bittsArray[7] = {0,0,0,0,0,0,0};
-    int i=0,j;
-    for(;i<size;++i){
-        for(j=0;j<8;++j){
-            for(;i<size*8;++i){
-                bittsArray[i] = num&maxPow ? 1 : 0;
-                num = num<<1;
-            }
-        }
-    }
-    int k = 0;
-    for (int i=7; i>=0;i--) {
-        bitters[k++] = bittsArray[i];
-    } 
-}
-
 void pinMode(uint8_t num, bool mode) {
     uint8_t port = digital_to_port(num);
     uint8_t bit = getBit(num);
@@ -48,13 +29,11 @@ void pinMode(uint8_t num, bool mode) {
 
     if (mode == INPUT) {
         uint8_t saved_SREG = SREG;
-//        cli();
         *reg &= ~bit;
         *pin &= ~bit;
         SREG = saved_SREG;
     } else {
         uint8_t saved_SREG = SREG;
-//        cli();
         *reg |= bit;
         SREG = saved_SREG;
     }
