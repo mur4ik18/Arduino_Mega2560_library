@@ -25,24 +25,22 @@ int main(void) {
             _delay_ms(1000);
         }
 
+        uint8_t infinity[] = {
+            0b00000001,
+            0b00000011,
+            0b10000010,
+            0b10100000,
+            0b00110000,
+            0b00010100,
+            0b10000100,
+            0b11000000,
+        }
         // show infinity
         while (1) {
-           setByte(dataPin, clockPin, latchPin, 0b00000001); 
-            _delay_ms(50);
-           setByte(dataPin, clockPin, latchPin, 0b00000011); 
-            _delay_ms(50);
-           setByte(dataPin, clockPin, latchPin, 0b10000010); 
-            _delay_ms(50);
-           setByte(dataPin, clockPin, latchPin, 0b10100000); 
-            _delay_ms(50);
-           setByte(dataPin, clockPin, latchPin, 0b00110000); 
-            _delay_ms(50);
-           setByte(dataPin, clockPin, latchPin, 0b00010100); 
-            _delay_ms(50);
-           setByte(dataPin, clockPin, latchPin, 0b10000100); 
-            _delay_ms(50);
-           setByte(dataPin, clockPin, latchPin, 0b11000000); 
-            _delay_ms(50);
+            for (uint8_t j = 0; j <= len(infinity); j++) {
+                setByte(dataPin, clockPin, latchPin, infinity[j]); 
+                _delay_ms(50);
+            }
         }
     }
     return 1;
