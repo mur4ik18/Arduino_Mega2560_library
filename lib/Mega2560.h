@@ -8,6 +8,7 @@
 #define __ATmegaxx0__
 #include "UART_driver.h"
 #include "lib_74HC595.h"
+#include "dig_7seg_display.h"
 
 #define ON true
 #define OFF false

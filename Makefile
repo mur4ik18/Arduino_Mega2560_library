@@ -15,14 +15,7 @@ SRCPATH = ./lib
 OUTPATH = ./out
 EXAMPLS = ./examples
 
-
-# --------------------------------------------------------------------------------------------------------------------
-# Here u can use different examples which you can find in examples folder
-# Names what you can use:
-# 	- blink
-#	- shift_register
-# --------------------------------------------------------------------------------------------------------------------
-OUTNAME = shift_register
+OUTNAME = blink
 
 OUTBIN = $(OUTPATH)/$(OUTNAME).bin
 OUTHEX = $(OUTPATH)/$(OUTNAME).hex
@@ -33,6 +26,9 @@ SRCS = $(wildcard $(SRCPATH)/*.c)
 OBJS = $(patsubst $(SRCPATH)/%.c, $(OUTPATH)/%.o, $(SRCS))
 
 all: $(OUTPATH) $(OUTHEX)
+
+blink shift_register 1dig_7seg_display:
+	make OUTNAME=$@
 
 $(OUTPATH):
 	$(MKDIR_P) $@
