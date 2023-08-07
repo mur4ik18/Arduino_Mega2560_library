@@ -33,3 +33,21 @@ I hope this project has improved me as an engineer and programmer.
     - write documentation
 * library LCD1602 Module (Display)
     - write documentation
+
+## Usage
+
+### Download code 
+```
+git clone https://github.com/mur4ik18/Arduino_Mega2560_library
+cd Arduino_Mega2560_library
+```
+
+### Compile example
+Available examples: 
+* blink
+* shift_register
+* 1dig_7seg_display
+
+```
+make example_name
+```
